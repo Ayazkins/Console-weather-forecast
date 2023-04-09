@@ -1,0 +1,1 @@
+add_library(Weather Weather.h Weather.cpp)
