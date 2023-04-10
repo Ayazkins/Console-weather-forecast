@@ -51,7 +51,6 @@ void Update() {
 void Input() {
   const std::string config = "C:\\Users\\10a-y\\CLionProjects\\labwork-10-Ayazkins\\Config.json";
   int MaxDay = std::stoi(forecast_days);
-  std::cout << MaxDay << ' ';
   LoadConfig(config);
   for (int i = 0; i < cities.size(); i++) {
 	all_weather.emplace_back(Weather(cities[i], "vTsHAQsuhpixjC8hq8ZTrC8vyRJxiTVV8TDWFph9", forecast_days));
@@ -66,13 +65,14 @@ void Input() {
 	int key = _getch();
 	if (key == 'n' || key == 'N') {
 	  current_city_size = (current_city_size + 1) % cities.size();
+	  system("cls");
 	  std::cout << all_weather[current_city_size].city << '\n';
 	  for (int i = 0; i < day; i++) {
 		hello.print(current_city_size, i);
 	  }
 	} else if (key == 27) {
 	  exit(0);
-	} else if (key == 'a') {
+	} else if (key == '+' || key == '=') {
 	  day = day + 1;
 	  if (day >= MaxDay) {
 		day = MaxDay;
@@ -82,7 +82,7 @@ void Input() {
 	  for (int i = 0; i < day; i++) {
 		hello.print(current_city_size, i);
 	  }
-	} else if (key == 'b') {
+	} else if (key == '-' || key == '_') {
 	  day = day - 1;
 	  if (day <= 0) {
 		day = 1;
