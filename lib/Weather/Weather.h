@@ -13,7 +13,7 @@ class Weather {
   std::vector<std::vector<std::string>> windspeed;
   std::vector<std::vector<int>> weather_code;
   std::vector<std::vector<std::string>> precipitation_probability;
-
+  //они в паблике потому что в interface я их использую
   Weather(std::string city_name, std::string api, std::string days_amount = "1") {
 	GetCoordinates(city_name, api);
 	GetWeather(days_amount);
@@ -25,11 +25,16 @@ class Weather {
 									   cpr::Parameters{{"name", city_name}},
 									   cpr::Header{{"X-Api-Key", api}});
 	nlohmann::json parsed_info = nlohmann::json::parse(city_info.text);
-	//std::cout << city_info.text;
 	city_la = parsed_info[0]["latitude"].dump();
 	city_lo = parsed_info[0]["longitude"].dump();
   }
+
   void GetWeather(std::string days_amount = "1") {
+	temperature.clear();
+	windspeed.clear();
+	weather_code.clear();
+	precipitation_probability.clear();
+	date.clear();
 	cpr::Response weather = cpr::Get(cpr::Url{"https://api.open-meteo.com/v1/forecast"},
 									 cpr::Parameters{{"latitude", city_la},
 													 {"longitude", city_lo},

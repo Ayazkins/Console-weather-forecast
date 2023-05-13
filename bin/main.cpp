@@ -16,6 +16,7 @@ std::string forecast_days = "7";
 std::vector<Weather> all_weather;
 int day = 0;
 int current_city_size = 0;
+std::string api;
 
 void LoadConfig(std::string str_config) {
   std::ifstream file(str_config);
@@ -49,11 +50,9 @@ void Update() {
 }
 
 void Input() {
-  const std::string config = "C:\\Users\\10a-y\\CLionProjects\\labwork-10-Ayazkins\\Config.json";
   int MaxDay = std::stoi(forecast_days);
-  LoadConfig(config);
   for (int i = 0; i < cities.size(); i++) {
-	all_weather.emplace_back(Weather(cities[i], "vTsHAQsuhpixjC8hq8ZTrC8vyRJxiTVV8TDWFph9", forecast_days));
+	all_weather.emplace_back(Weather(cities[i], api, forecast_days));
   }
   Interface hello(all_weather);
   std::cout << all_weather[current_city_size].city << '\n';
@@ -96,11 +95,14 @@ void Input() {
   }
 }
 
-int main() {
-  std::thread t1(Update);
+int main(int argc, char* argv[]) {
+  const std::string config = argv[0];
+  api = argv[1];
+  LoadConfig(config);
   std::thread t2(Input);
-  t1.join();
+  std::thread t1(Update);
   t2.join();
+  t1.join();
   return 0;
 }
 

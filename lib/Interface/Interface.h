@@ -4,110 +4,109 @@
 #include <ftxui/screen/screen.hpp>
 #include "ftxui/dom/node.hpp"
 #include "ftxui/screen/color.hpp"
-using namespace ftxui;
 
 class Interface {
+ private:
+  std::vector<Weather> info;
  public:
-  std::vector<Weather> &info;
- public:
-  Interface(std::vector<Weather> &weather) : info(weather) {};
+  Interface(std::vector<Weather> weather) : info(weather) {};
 
-  Element moon() {
-	return vbox({
-					color(Color::GrayLight, text("   *      *    ")),
-					color(Color::GrayLight, text("        *      ")),
-					color(Color::GrayLight, text(" *          )  ")),
-					color(Color::GrayLight, text("        *      ")),
-					color(Color::GrayLight, text("   *         * ")),
+  ftxui::Element moon() {
+	return ftxui::vbox({
+					color(ftxui::Color::GrayLight, ftxui::text("   *      *    ")),
+					color(ftxui::Color::GrayLight, ftxui::text("        *      ")),
+					color(ftxui::Color::GrayLight, ftxui::text(" *          )  ")),
+					color(ftxui::Color::GrayLight, ftxui::text("        *      ")),
+					color(ftxui::Color::GrayLight, ftxui::text("   *         * ")),
 				});
   }
 
-  Element cloudy_night() {
-	return vbox({
-					color(Color::GrayLight, text("     *    *   ")),
-					color(Color::GrayLight, text("      .--.  ) ")),
-					color(Color::GrayLight, text(" * .-(    ).  ")),
-					color(Color::GrayLight, text("  (___.__)__) ")),
-					color(Color::GrayLight, text("              ")),
+  ftxui::Element cloudy_night() {
+	return ftxui::vbox({
+					color(ftxui::Color::GrayLight,ftxui::text("     *    *   ")),
+					color(ftxui::Color::GrayLight, ftxui::text("      .--.  ) ")),
+					color(ftxui::Color::GrayLight, ftxui::text(" * .-(    ).  ")),
+					color(ftxui::Color::GrayLight, ftxui::text("  (___.__)__) ")),
+					color(ftxui::Color::GrayLight, ftxui::text("              ")),
 				});
   }
 
-  Element sun() {
-	return vbox({
-					color(Color::Gold1, text("     \\   /     ")),
-					color(Color::Gold1, text("      .-.      ")),
-					color(Color::Gold1, text("   ― (   ) ―   ")),
-					color(Color::Gold1, text("      `-’     ")),
-					color(Color::Gold1, text("     /   \\    ")),
+  ftxui::Element sun() {
+	return ftxui::vbox({
+					color(ftxui::Color::Gold1, ftxui::text("     \\   /     ")),
+					color(ftxui::Color::Gold1, ftxui::text("      .-.      ")),
+					color(ftxui::Color::Gold1, ftxui::text("   ― (   ) ―   ")),
+					color(ftxui::Color::Gold1, ftxui::text("      `-’     ")),
+					color(ftxui::Color::Gold1, ftxui::text("     /   \\    ")),
 				});
   }
 
-  Element fog() {
-	return vbox({
-					color(Color::SteelBlue, text("              ")),
-					color(Color::SteelBlue, text("  _ - _ - _ -  ")),
-					color(Color::SteelBlue, text("   _ - _ - _   ")),
-					color(Color::SteelBlue, text("  _ - _ - _ -  ")),
-					color(Color::SteelBlue, text("               ")),
-
-				});
-  }
-
-  Element cloud() {
-	return vbox({
-					color(Color::White, text("               ")),
-					color(Color::White, text("      .--.    ")),
-					color(Color::White, text("   .-(    ).   ")),
-					color(Color::White, text("  (___.__)__) ")),
-					color(Color::White, text("              ")),
-				});
-  }
-
-  Element sun_cloud() {
-	return vbox({
-					color(Color::Gold1, text("    \\  /       ")),
-					hbox({color(Color::Gold1, text("  _ /\"\"")), color(Color::White, text(".-.    "))}),
-					hbox({color(Color::Gold1, text("    \\_")), color(Color::White, text("(   ).   "))}),
-					hbox({color(Color::Gold1, text("    /")), color(Color::White, text("(___(__)  "))}),
-					text("               "),
+  ftxui::Element fog() {
+	return ftxui::vbox({
+					color(ftxui::Color::SteelBlue, ftxui::text("              ")),
+					color(ftxui::Color::SteelBlue, ftxui::text("  _ - _ - _ -  ")),
+					color(ftxui::Color::SteelBlue, ftxui::text("   _ - _ - _   ")),
+					color(ftxui::Color::SteelBlue, ftxui::text("  _ - _ - _ -  ")),
+					color(ftxui::Color::SteelBlue, ftxui::text("               ")),
 
 				});
   }
 
-  Element snow() {
-	return vbox({
-					color(Color::GrayLight, text("      .--.    ")),
-					color(Color::GrayLight, text("   .-(    ).   ")),
-					color(Color::GrayLight, text("  (___.__)__) ")),
-					color(Color::White, text("  *  *  *  *  ")),
-					color(Color::White, text(" *  *  *  *   ")),
+  ftxui::Element cloud() {
+	return ftxui::vbox({
+					color(ftxui::Color::White, ftxui::text("               ")),
+					color(ftxui::Color::White, ftxui::text("      .--.    ")),
+					color(ftxui::Color::White, ftxui::text("   .-(    ).   ")),
+					color(ftxui::Color::White, ftxui::text("  (___.__)__) ")),
+					color(ftxui::Color::White, ftxui::text("              ")),
+				});
+  }
+
+  ftxui::Element sun_cloud() {
+	return ftxui::vbox({
+					color(ftxui::Color::Gold1, ftxui::text("    \\  /       ")),
+					ftxui::hbox({color(ftxui::Color::Gold1, ftxui::text("  _ /\"\"")), color(ftxui::Color::White, ftxui::text(".-.    "))}),
+					ftxui::hbox({color(ftxui::Color::Gold1, ftxui::text("    \\_")), color(ftxui::Color::White, ftxui::text("(   ).   "))}),
+					ftxui::hbox({color(ftxui::Color::Gold1, ftxui::text("    /")), color(ftxui::Color::White, ftxui::text("(___(__)  "))}),
+					ftxui::text("               "),
 
 				});
   }
 
-  Element thunder() {
-	return vbox({
-					color(Color::White, text("      .--.    ")),
-					color(Color::White, text("   .-(    ).   ")),
-					color(Color::White, text("  (__..__)__) ")),
-					color(Color::White, text("  ‘  /  ‘  ‘   ")),
-					color(Color::White, text(" ‘   \  ‘  ‘   ")),
+  ftxui::Element snow() {
+	return ftxui::vbox({
+					color(ftxui::Color::GrayLight, ftxui::text("      .--.    ")),
+					color(ftxui::Color::GrayLight, ftxui::text("   .-(    ).   ")),
+					color(ftxui::Color::GrayLight, ftxui::text("  (___.__)__) ")),
+					color(ftxui::Color::White, ftxui::text("  *  *  *  *  ")),
+					color(ftxui::Color::White, ftxui::text(" *  *  *  *   ")),
 
 				});
   }
 
-  Element rain() {
-	return vbox({
-					color(Color::GrayLight, text("      .--.    ")),
-					color(Color::GrayLight, text("   .-(    ).   ")),
-					color(Color::GrayLight, text("  (___.__)__) ")),
-					color(Color::DeepSkyBlue2, text("  ‘  ‘  ‘  ‘  ")),
-					color(Color::DeepSkyBlue2, text(" ‘  ‘  ‘  ‘   ")),
+  ftxui::Element thunder() {
+	return ftxui::vbox({
+					color(ftxui::Color::White, ftxui::text("      .--.    ")),
+					color(ftxui::Color::White, ftxui::text("   .-(    ).   ")),
+					color(ftxui::Color::White, ftxui::text("  (__..__)__) ")),
+					color(ftxui::Color::White, ftxui::text("  ‘  /  ‘  ‘   ")),
+					color(ftxui::Color::White, ftxui::text(" ‘   \  ‘  ‘   ")),
 
 				});
   }
 
-  Element What_weather(int time, int cur_day, int cur_city) {
+  ftxui::Element rain() {
+	return ftxui::vbox({
+					color(ftxui::Color::GrayLight, ftxui::text("      .--.    ")),
+					color(ftxui::Color::GrayLight, ftxui::text("   .-(    ).   ")),
+					color(ftxui::Color::GrayLight, ftxui::text("  (___.__)__) ")),
+					color(ftxui::Color::DeepSkyBlue2, ftxui::text("  ‘  ‘  ‘  ‘  ")),
+					color(ftxui::Color::DeepSkyBlue2, ftxui::text(" ‘  ‘  ‘  ‘   ")),
+
+				});
+  }
+
+  ftxui::Element What_weather(int time, int cur_day, int cur_city) {
 	if (info[cur_city].weather_code[cur_day][time] == 0 || info[cur_city].weather_code[cur_day][time] == 1) {
 	  if (time == 0) {
 		return moon();
@@ -120,7 +119,7 @@ class Interface {
 	  } else {
 		return sun_cloud();
 	  }
-	} else if (info[cur_city].weather_code[cur_day][time] == 4) {
+	} else if (info[cur_city].weather_code[cur_day][time] == 3) {
 	  return cloud();
 	} else if (info[cur_city].weather_code[cur_day][time] == 45 || info[cur_city].weather_code[cur_day][time] == 48) {
 	  return fog();
@@ -157,7 +156,7 @@ class Interface {
 	  return "Clear";
 	} else if (info[cur_city].weather_code[cur_day][time] == 2) {
 	  return "Partly Cloudy";
-	} else if (info[cur_city].weather_code[cur_day][time] == 4) {
+	} else if (info[cur_city].weather_code[cur_day][time] == 3) {
 	  return "Cloudy";
 	} else if (info[cur_city].weather_code[cur_day][time] == 45 || info[cur_city].weather_code[cur_day][time] == 48) {
 	  return "Foggy";
@@ -189,24 +188,24 @@ class Interface {
 	}
   }
 
-  Element BoxConstruct(const std::string &daytime, const std::string &weather, int time, int cur_day, int cur_city) {
-	return vbox({
-					text(daytime) | center,
-					separator(),
-					hbox({
+  ftxui::Element BoxConstruct(const std::string &daytime, const std::string &weather, int time, int cur_day, int cur_city) {
+	return ftxui::vbox({
+						   ftxui::text(daytime) | ftxui::center,
+						   ftxui::separator(),
+						   ftxui::hbox({
 							 What_weather(time, cur_day, cur_city),
-							 vbox({
-									  text(weather),
-									  text(info[cur_city].temperature[cur_day][time] + "C"),
-									  text(info[cur_city].windspeed[cur_day][time] + "km/h"),
-									  text(info[cur_city].precipitation_probability[cur_day][time] + "%"),
+							 ftxui::vbox({
+											 ftxui::text(weather),
+											 ftxui::text(info[cur_city].temperature[cur_day][time] + "C"),
+											 ftxui::text(info[cur_city].windspeed[cur_day][time] + "km/h"),
+											 ftxui::text(info[cur_city].precipitation_probability[cur_day][time] + "%"),
 								  }),
 						 }),
 				});
   };
 
-  Element DayConstruct(int cur_city, int cur_day) {
-	return vbox({text(info[cur_city].date[cur_day]) | center, hbox({
+  ftxui::Element DayConstruct(int cur_city, int cur_day) {
+	return ftxui::vbox({ftxui::text(info[cur_city].date[cur_day]) | ftxui::center, ftxui::hbox({
 																	   BoxConstruct("Night",
 																					What_weather_in_string(0,
 																										   cur_day,
@@ -214,7 +213,7 @@ class Interface {
 																					0,
 																					cur_day,
 																					cur_city),
-																	   separator(),
+																	   ftxui::separator(),
 																	   BoxConstruct("Morning",
 																					What_weather_in_string(1,
 																										   cur_day,
@@ -222,7 +221,7 @@ class Interface {
 																					1,
 																					cur_day,
 																					cur_city),
-																	   separator(),
+																	   ftxui::separator(),
 																	   BoxConstruct("Day",
 																					What_weather_in_string(2,
 																										   cur_day,
@@ -230,7 +229,7 @@ class Interface {
 																					2,
 																					cur_day,
 																					cur_city),
-																	   separator(),
+																	   ftxui::separator(),
 																	   BoxConstruct("Evening",
 																					What_weather_in_string(3,
 																										   cur_day,
@@ -238,16 +237,15 @@ class Interface {
 																					3,
 																					cur_day,
 																					cur_city),
-																   }) | borderStyled(ROUNDED)});
+																   }) | borderStyled(ftxui::ROUNDED)});
   };
 
   void print(int cur_city, int cur_day) {
 	auto document = DayConstruct(cur_city, cur_day);
 	auto screen =
-		Screen::Create(Dimension::Fit(document), Dimension::Fit(document));
+		ftxui::Screen::Create(ftxui::Dimension::Fit(document), ftxui::Dimension::Fit(document));
 	Render(screen, document);
 	screen.Print();
-	std::cout << '\n';
   }
 };
 
